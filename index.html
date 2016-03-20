@@ -5,12 +5,29 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <!-- <script  src = "angular-1.5.0-rc.2/angular.min.js"></script> -->
   <script src="todo.js"></script>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/heroic-features.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/form.css">
+  <!-- <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/heroic-features.css" rel="stylesheet"> -->
 </head>
 
 <body ng-controller="TodoListController as todoList">
-  {{todoList.title}}
+  <div class="showsum">
+    <div ng-repeat="show in todoList.data">
+          {{show.namebook}} <br>
+          {{show.price}} <hr>
+    </div>
+  </div>
+  <div class="picture">
+    <img src="img/hp_1.jpg" alt="" ng-click="todoList.add('harry potter ศิลาอาถรรพ' , 100)">
+    <img src="img/hp_2.jpg" alt="" ng-click="todoList.add('harry potter ห้องแห่งความลับ' , 100)">
+    <img src="img/hp_3.jpg" alt="" ng-click="todoList.add(2)">
+    <br>
+    <img src="img/hp_4.jpg" alt="" ng-click="todoList.add(3)">
+    <img src="img/hp_5.jpg" alt="" ng-click="todoList.add(4)">
+    <img src="img/hp_6.jpg" alt="" ng-click="todoList.add(5)">
+    <br>
+    <img src="img/hp_7.jpg" alt="" ng-click="todoList.add(6)">
+  </div>
 </body>
 
 </html>
