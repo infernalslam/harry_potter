@@ -11,14 +11,17 @@
 </head>
 
 <body ng-controller="TodoListController as todoList">
-  <div aling="right">
+  <div align="left">
+    ราคา{{todoList.total}}
+  </div>
+  <center><button type="button" ng-click="todoList.print()">cal</button></center>
+  <div align="right">
      <div ng-repeat="product in todoList.products">
        {{product.name}} <br>
        {{product.price | currency:"฿ "}} <br>
        <img src="{{product.pic}}" alt=""> <br>
-       <input class="add-button" type="button" ng-click="addItemToCart(product)" value="Add to Cart" />
+       <input class="add-button" type="button" ng-click="todoList.add(product)" value="Add to Cart" />
      </div>
   </div>
 </body>
-
 </html>
