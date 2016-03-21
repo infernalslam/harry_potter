@@ -40,4 +40,25 @@ angular.module('todoApp', [])
         price: 100.00
       }
     ]
+    todoList.item = []
+    todoList.cart = []
+    todoList.add = function (product) {
+      todoList.item.push(product.id)
+      console.log(todoList.item)
+      todoList.cart.push(product)
+      var arr = todoList.item
+      arr.sort()
+      console.log('arr:' + arr) // sort min to max
+      var dup = arr.filter(function (v, i, o) {
+        if (i >= 0 && v !== o[i - 1]) {
+          return v
+        }
+      })
+      console.log('dup' + dup)
+      // calculate sum
+      // todoList.sum = arr.length * 100
+      // console.log(todoList.sum)
+      // var sale = (arr.length - dup.length)
+      // console.log('จำนวนซ้ำ' + sale)
+    }
   })
