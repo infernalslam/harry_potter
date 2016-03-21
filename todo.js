@@ -56,9 +56,6 @@ angular.module('todoApp', [])
       })
       console.log('dup' + dup)
       // calculate sum
-      // todoList.sum = arr.length * 100
-      // console.log(todoList.sum)
-      // var sale = (arr.length - dup.length)
-      // console.log('จำนวนซ้ำ' + sale)
+      console.log('arr :' + arr.length + '/dup :' + dup.length)
     }
   })
