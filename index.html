@@ -12,15 +12,19 @@
 
 <body ng-controller="TodoListController as todoList">
   <div align="left">
-    ราคา{{todoList.sum}}
+    <button type="button" ng-click="todoList.add('1' ,'harry potter ศิลาอาถรรพ', 100)">1</button>
+    <button type="button" ng-click="todoList.add('2' ,'harry potter ห้องแห่งความลับ', 100)">2</button>
+    <button type="button" ng-click="todoList.add('3' ,'harry potter นักโทษแห่งอัซคาบัน', 100)">3</button>
+    <button type="button" ng-click="todoList.add('4' ,'harry potter ถ้วยอัคนี', 100)">4</button>
+    <button type="button" ng-click="todoList.add('5' ,'harry potter ภาคีนกฟีนิกซ์', 100)">5</button>
+    <button type="button" ng-click="todoList.add('6' ,'harry potter เจ้าชายเลือดผสม', 100)">6</button>
+    <button type="button" ng-click="todoList.add( '7' ,'harry potter เครื่องรางยมทูต',100)">7</button>
   </div>
-  <div align="right">
-     <div ng-repeat="product in todoList.products">
-       {{product.name}} <br>
-       {{product.price | currency:"฿ "}} <br>
-       <img src="{{product.pic}}" alt=""> <br>
-       <input class="add-button" type="button" ng-click="todoList.add(product)" value="Add to Cart" />
-     </div>
+  <hr>
+  <div ng-repeat="show in todoList.list">
+      {{show.name}} {{show.price}} ฿ <br>
   </div>
+  <button type="button" ng-click="todoList.cal()">cal</button>
 </body>
+
 </html>
