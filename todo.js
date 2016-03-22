@@ -16,6 +16,7 @@ angular.module('todoApp', [])
         }
         todoList.show.push(data_book)
       }
+      console.log(todoList.show)
     }
     var checkarr = function (arr, id) {
       for (var i = 0; i < arr.length; i++) {
@@ -31,12 +32,4 @@ angular.module('todoApp', [])
         }
       }
     }
-    // todoList.list = []
-    todoList.bill = function () {
-      todoList.totalAmount = todoList.show.reduce(function (sum, book) {
-        return sum + book.amount
-      }, 0)
-      return todoList.show
-    }
-    console.log(todoList.show)
   })

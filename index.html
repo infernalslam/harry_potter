@@ -27,9 +27,8 @@
         <button type="button" ng-click="todoList.add(7, 'book7', 100.00, 1)">7</button>
       </div>
       <div class="col-xs-4">show
-        {{todoList.bill()}}
         <div ng-repeat="show in todoList.show">
-          {{show.name}} {{show.price}} ฿ {{show.amount}} <br><hr>
+          {{show.name}} : {{show.price}} ฿ จำนวน {{show.amount}} ลำดับ {{show.amount * 100}} <br><hr>
         </div>
       </div>
     </div>
