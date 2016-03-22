@@ -1,10 +1,6 @@
-.picture {
-  margin-left:100px;
-  margin-right: 600px;
-  background-color: black;
+.left {
+   margin-left: 0px;
 }
-.showsum {
-  margin-left:2300px;
-  margin-top: 0px;
-  background-color: yellow;
+.right {  
+  margin-right: 100px;
 }
