@@ -37,17 +37,12 @@ angular.module('todoApp', [])
       console.log(todoList.promotion)
     }
     todoList.cal = function () {
-      console.log('yes')
-      var flag = true
-      while (flag !== false) {
-        for (var i = 0; i < todoList.promotion[0]; i++) {
-          todoList.promotion[i] = todoList.promotion[i] - 1
-          promo(todoList.promotion[i])
-        }
+      for (var i = 0; i <= todoList.promotion[0]; i++) {
+        promo(todoList.promotion[i])
       }
     }
-    var promo = function (max) {
-      console.log(max)
+    var promo = function (arr) {
+      console.log('arr :' + arr)
     }
     var checkarr = function (arr, id) {
       for (var i = 0; i < arr.length; i++) {
