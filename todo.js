@@ -37,13 +37,46 @@ angular.module('todoApp', [])
       console.log(todoList.promotion)
     }
     todoList.cal = function () {
+      var count_book = 0
+      var max = todoList.promotion[0]
+      var discount = 0
       for (var i = 0; i <= todoList.promotion[0]; i++) {
-        promo(todoList.promotion[i])
+        for (var j = 0;j < todoList.promotion.length; j++) {
+          if (todoList.promotion[j] > 0) {
+            count_book++
+            if (max < count_book) {
+              max = count_book
+            }
+          }
+        }
+        if (count_book === 2) {
+          discount += 20
+          console.log('20')
+        } else if (count_book === 3) {
+          discount += 60
+          console.log('60')
+        } else if (count_book === 4) {
+          discount += 120
+          console.log('120')
+        } else if (count_book === 5) {
+          discount += 200
+          console.log('200')
+        } else if (count_book === 6) {
+          discount += 300
+          console.log('300')
+        } else if (count_book === 7) {
+          discount += 420
+          console.log('420')
+        }
+        for (var k = 0; k < todoList.promotion.length; k++) {
+          todoList.promotion[k] -= 1
+        }
+        count_book = 0
       }
+      console.log('ส่วนลด :' + discount)
     }
-    var promo = function (arr) {
-      console.log('arr :' + arr)
-    }
+    // var promo = function (arr) {
+    // }
     var checkarr = function (arr, id) {
       for (var i = 0; i < arr.length; i++) {
         if (arr[i].id === id) {
