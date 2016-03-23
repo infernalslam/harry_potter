@@ -4,6 +4,7 @@ angular.module('todoApp', [])
     var todoList = this
     todoList.show = []
     todoList.totalamount = []
+    todoList.promotion = []
     todoList.add = function (id, name, price) {
       if (checkarr(todoList.show, id)) {
         var index = findarr(todoList.show, id)
@@ -26,6 +27,27 @@ angular.module('todoApp', [])
         }
         return 0
       })
+      var amountproduct = []
+      for (var i = 0; i < todoList.show.length; i++) {
+        if (typeof todoList.show[i].amount !== 'undefined') {
+          amountproduct.push(todoList.show[i].amount)
+        }
+      }
+      todoList.promotion = amountproduct
+      console.log(todoList.promotion)
+    }
+    todoList.cal = function () {
+      console.log('yes')
+      var flag = true
+      while (flag !== false) {
+        for (var i = 0; i < todoList.promotion[0]; i++) {
+          todoList.promotion[i] = todoList.promotion[i] - 1
+          promo(todoList.promotion[i])
+        }
+      }
+    }
+    var promo = function (max) {
+      console.log(max)
     }
     var checkarr = function (arr, id) {
       for (var i = 0; i < arr.length; i++) {
