@@ -38,16 +38,14 @@ angular.module('todoApp', [])
     }
     todoList.cal = function () {
       var count_book = 0
-      var max = todoList.promotion[0]
+      // var max = todoList.promotion[0]
       var discount = 0
-      for (var i = 0; i <= todoList.promotion[0]; i++) {
-        for (var j = 0;j < todoList.promotion.length; j++) {
+      for (var i = 0; i <= todoList.promotion.length; i++) {
+        for (var j = 0; j < todoList.promotion.length; j++) {
           if (todoList.promotion[j] > 0) {
             count_book++
-            if (max < count_book) {
-              max = count_book
-            }
           }
+          console.log('เหลือกี่คู่ :' + count_book)
         }
         if (count_book === 2) {
           discount += 20
@@ -75,8 +73,6 @@ angular.module('todoApp', [])
       }
       console.log('ส่วนลด :' + discount)
     }
-    // var promo = function (arr) {
-    // }
     var checkarr = function (arr, id) {
       for (var i = 0; i < arr.length; i++) {
         if (arr[i].id === id) {
