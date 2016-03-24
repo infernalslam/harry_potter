@@ -7,6 +7,8 @@ angular.module('todoApp', [])
     todoList.promo = []
     todoList.discount = 0
     todoList.total = 0
+    todoList.page = false
+    todoList.show = []
     todoList.addBook = function (ep, name, price) {
       if (checkStore(todoList.store, ep)) {
         var index = addAmount(todoList.store, ep)
@@ -19,6 +21,18 @@ angular.module('todoApp', [])
           amount: 1
         }
         todoList.store.push(dataBook)
+      }
+      if (checkStore(todoList.show, ep)) {
+        var index_show = addAmount(todoList.show, ep)
+        todoList.show[index_show].amount += 1
+      } else {
+        var data = {
+          ep: ep,
+          name: name,
+          price: price,
+          amount: 1
+        }
+        todoList.show.push(data)
       }
       todoList.store.sort(function (a, b) {
         if (a.amount > b.amount) return -1
@@ -33,6 +47,8 @@ angular.module('todoApp', [])
       }
       todoList.promo = amount
       console.log('todoList.promo :' + todoList.promo)
+      todoList.page = true
+      console.log(todoList.store)
     }
     todoList.bill = function () {
       var total = 0
