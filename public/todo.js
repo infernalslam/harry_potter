@@ -121,14 +121,13 @@ angular.module('todoApp', [])
       console.log(data)
       var countbook = 0
       todoList.discount = 0
-      // var max = 0
+      var max = 0
       for (var i = 0; i <= data.length; i++) {
         for (var j = 0; j < data.length; j++) {
           if (data[j] > 0) {
             countbook++
-            if (data[j] === 0) {
-              countbook = 0
-              break
+            if (max < countbook) {
+              max = countbook
             }
           }
         }
@@ -151,9 +150,6 @@ angular.module('todoApp', [])
         } else if (countbook === 7) {
           todoList.discount += 420
           console.log('420')
-        } else if (countbook === 1) {
-          todoList.discount += 0
-          console.log('0')
         }
         for (var k = 0; k < data.length; k++) {
           todoList.promo[k] -= 1
@@ -176,12 +172,20 @@ angular.module('todoApp', [])
         }
       }
     }
-    todoList.delbutton = function (data, index) {
-      todoList.show.splice(index, 1)
+    todoList.delbutton = function (data) {
+      var index = todoList.promo.indexOf(data)
+      console.log('ช่องที่เราต้องการจะลบ' + index)
       todoList.promo.splice(index, 1)
+      todoList.show.splice(index, 1)
       todoList.store.splice(index, 1)
-      // todoList.discount = 0
-      // todoList.bill() * 0
-      todoList.cal()
+      var amount = []
+      for (var i = 0; i < todoList.store.length; i++) {
+        if (typeof todoList.store[i].amount !== 'undefined') {
+          amount.push(todoList.store[i].amount)
+        }
+      }
+      todoList.promo = amount
+      console.log('เรียงใหม่เเล้วได้ :' + todoList.promo)
+      cal(todoList.promo)
     }
   })
