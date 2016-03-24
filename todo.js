@@ -43,7 +43,6 @@ angular.module('todoApp', [])
     }
     todoList.cal = function () {
       var countbook = 0
-      todoList.discount = 0
       var max = 0
       for (var i = 0; i <= todoList.promo.length; i++) {
         for (var j = 0; j < todoList.promo.length; j++) {

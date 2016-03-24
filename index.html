@@ -1,24 +1,53 @@
 <!doctype html>
 <html ng-app="todoApp">
-  <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
-    <script src="todo.js"></script>
-  </head>
-  <body ng-controller="TodoListController as todoList">
-    {{todoList.title}} <br>
-    <button type="button" ng-click="todoList.addBook(1,'Harry Potter and the Philosophers Stone',100.00)">1</button>
-    <button type="button" ng-click="todoList.addBook(2,'Harry Potter and the Chamber of Secrets',100.00)">2</button>
-    <button type="button" ng-click="todoList.addBook(3,'Harry Potter and the Prisoner of Azkaban',100.00)">3</button>
-    <button type="button" ng-click="todoList.addBook(4,'Harry Potter and the Goblet of Fire',100.00)">4</button>
-    <button type="button" ng-click="todoList.addBook(5,'Harry Potter and the Order of the Phoenix',100.00)">5</button>
-    <button type="button" ng-click="todoList.addBook(6,'Harry Potter and the Half-Blood Prince',100.00)">6</button>
-    <button type="button" ng-click="todoList.addBook(7,'Harry Potter and the Deathly Hallows ',100.00)">7</button>
-    <button type="button" ng-click="todoList.cal()">cal</button>
-    <div align="right" ng-repeat="show in todoList.store">
-       {{show.name}} {{show.amount}} | {{show.price * show.amount}} ฿ <hr><br>  
-    </div> <br>
-    จ่ายเงินทั้งหมด : {{todoList.bill() * 100}} <br>
-    ส่วนลด : {{todoList.discount}} <br>
-    ชำระเงิน : {{(todoList.bill() * 100) - todoList.discount}}
-  </body>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+  <script src="todo.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+</head>
+
+<body ng-controller="TodoListController as todoList">
+  <!-- head -->
+  {{todoList.title}}
+  <br>
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img alt="Brand" src="http://www.b2s.nl/v2/public/themes/v2_mobile/img/share-link-g.png">
+          </a>
+        </div>
+        <p class="navbar-text navbar-left">บ้านนายจิน   สั่งหนังสืออนไลน์ได้เลยที่นี่ครับ</p>
+      </div>
+    </nav>
+  </div>
+  <!-- footer -->
+
+
+
+
+  <button type="button" ng-click="todoList.addBook(1,'Harry Potter and the Philosophers Stone',100.00)">1</button>
+  <button type="button" ng-click="todoList.addBook(2,'Harry Potter and the Chamber of Secrets',100.00)">2</button>
+  <button type="button" ng-click="todoList.addBook(3,'Harry Potter and the Prisoner of Azkaban',100.00)">3</button>
+  <button type="button" ng-click="todoList.addBook(4,'Harry Potter and the Goblet of Fire',100.00)">4</button>
+  <button type="button" ng-click="todoList.addBook(5,'Harry Potter and the Order of the Phoenix',100.00)">5</button>
+  <button type="button" ng-click="todoList.addBook(6,'Harry Potter and the Half-Blood Prince',100.00)">6</button>
+  <button type="button" ng-click="todoList.addBook(7,'Harry Potter and the Deathly Hallows ',100.00)">7</button>
+  <button type="button" ng-click="todoList.cal()">cal</button>
+  <div align="right" ng-repeat="show in todoList.store">
+    {{show.name}} {{show.amount}} | {{show.price * show.amount}} ฿
+    <hr>
+    <br>
+  </div>
+  <br> จ่ายเงินทั้งหมด : {{todoList.bill() * 100}}
+  <br> ส่วนลด : {{todoList.discount}}
+  <br> ชำระเงิน : {{(todoList.bill() * 100) - todoList.discount}}
+</body>
+
 </html>
