@@ -48,8 +48,7 @@ angular.module('todoApp', [])
       todoList.promo = amount
       console.log('todoList.promo :' + todoList.promo)
       todoList.page = true
-      // console.log(todoList.store)
-      console.log(todoList.show)
+      cal(todoList.promo)
     }
     todoList.bill = function () {
       var total = 0
@@ -58,36 +57,108 @@ angular.module('todoApp', [])
       }
       return total
     }
-    todoList.cal = function () {
+    // todoList.cal = function () {
+    //   var countbook = 0
+    //   var max = 0
+    //   for (var i = 0; i <= todoList.promo.length; i++) {
+    //     for (var j = 0; j < todoList.promo.length; j++) {
+    //       if (todoList.promo[j] > 0) {
+    //         countbook++
+    //         if (max < countbook) {
+    //           max = countbook
+    //         }
+    //       }
+    //     }
+    //     console.log('countbook :' + countbook)
+    //     if (countbook === 2) {
+    //       todoList.discount += 20
+    //     } else if (countbook === 3) {
+    //       todoList.discount += 60
+    //     } else if (countbook === 4) {
+    //       todoList.discount += 120
+    //     } else if (countbook === 5) {
+    //       todoList.discount += 200
+    //     } else if (countbook === 6) {
+    //       todoList.discount += 300
+    //     } else if (countbook === 7) {
+    //       todoList.discount += 420
+    //     }
+    //     for (var k = 0; k < todoList.promo.length; k++) {
+    //       todoList.promo[k] -= 1
+    //     }
+    //     countbook = 0
+    //   }
+    //   console.log('todoList.discount' + todoList.discount)
+    // }
+    // function cal (data) {
+    //   todoList.discount = 0
+    //   var countbook = 0
+    //   var exit = 0
+    //   do {
+    //     for (var i = 0; i < data.length; i++) {
+    //       if (data[i] !== 0) countbook++
+    //       if (data[i] === 0) {
+    //         countbook += 0
+    //         break
+    //       }
+    //     }
+    //     if (countbook === 1) {}
+    //     if (countbook === 2) { todoList.discount += 20 }
+    //     else if (countbook === 3) todoList.discount += 60
+    //     else if (countbook === 4) todoList.discount += 120
+    //     else if (countbook === 5) todoList.discount += 200
+    //     else if (countbook === 6) todoList.discount += 300
+    //     else if (countbook === 7) todoList.discount += 420
+    //     else if (countbook === 0) exit = 1
+    //     for (var j = 0; j < data.length; j++) {
+    //       data[j] -= 1
+    //       countbook = 0
+    //     }
+    //   } while (exit !== 1)
+    //   console.log('ส่วนลด' + todoList.discount)
+    // }
+    function cal (data) {
+      console.log(data)
       var countbook = 0
-      var max = 0
-      for (var i = 0; i <= todoList.promo.length; i++) {
-        for (var j = 0; j < todoList.promo.length; j++) {
-          if (todoList.promo[j] > 0) {
+      todoList.discount = 0
+      // var max = 0
+      for (var i = 0; i <= data.length; i++) {
+        for (var j = 0; j < data.length; j++) {
+          if (data[j] > 0) {
             countbook++
-            if (max < countbook) {
-              max = countbook
+            if (data[j] === 0) {
+              countbook = 0
+              break
             }
           }
         }
         console.log('countbook :' + countbook)
         if (countbook === 2) {
           todoList.discount += 20
+          console.log('20')
         } else if (countbook === 3) {
           todoList.discount += 60
+          console.log('60')
         } else if (countbook === 4) {
           todoList.discount += 120
+          console.log('120')
         } else if (countbook === 5) {
           todoList.discount += 200
+          console.log('200')
         } else if (countbook === 6) {
           todoList.discount += 300
+          console.log('300')
         } else if (countbook === 7) {
           todoList.discount += 420
+          console.log('420')
+        } else if (countbook === 1) {
+          todoList.discount += 0
+          console.log('0')
         }
-        for (var k = 0; k < todoList.promo.length; k++) {
+        for (var k = 0; k < data.length; k++) {
           todoList.promo[k] -= 1
+          countbook = 0
         }
-        countbook = 0
       }
       console.log('todoList.discount' + todoList.discount)
     }
@@ -109,7 +180,8 @@ angular.module('todoApp', [])
       todoList.show.splice(index, 1)
       todoList.promo.splice(index, 1)
       todoList.store.splice(index, 1)
-      todoList.discount = 0
-      todoList.bill() * 0
+      // todoList.discount = 0
+      // todoList.bill() * 0
+      todoList.cal()
     }
   })
