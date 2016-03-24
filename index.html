@@ -40,24 +40,25 @@
         <img src="img/hp_5.jpg" width="140" height="140" alt="Harry Potter and the Order of the Phoenix" class="img-thumbnail" ng-click="todoList.addBook(5,'Harry Potter and the Order of the Phoenix',100.00)">
         <img src="img/hp_6.jpg" width="140" height="140" alt="Harry Potter and the Half-Blood Prince" class="img-thumbnail" ng-click="todoList.addBook(6,'Harry Potter and the Half-Blood Prince',100.00)">
         <img src="img/hp_7.jpg" width="140" height="140" alt="Harry Potter and the Deathly Hallows" class="img-thumbnail" ng-click="todoList.addBook(7,'Harry Potter and the Deathly Hallows',100.00)">
-        <!-- <button type="button" ng-click="todoList.addBook(1,'Harry Potter and the Philosophers Stone',100.00)">1</button> -->
-        <!-- <button type="button" ng-click="todoList.addBook(2,'Harry Potter and the Chamber of Secrets',100.00)">2</button>
-        <button type="button" ng-click="todoList.addBook(3,'Harry Potter and the Prisoner of Azkaban',100.00)">3</button>
-        <button type="button" ng-click="todoList.addBook(4,'Harry Potter and the Goblet of Fire',100.00)">4</button>
-        <button type="button" ng-click="todoList.addBook(5,'Harry Potter and the Order of the Phoenix',100.00)">5</button>
-        <button type="button" ng-click="todoList.addBook(6,'Harry Potter and the Half-Blood Prince',100.00)">6</button>
-        <button type="button" ng-click="todoList.addBook(7,'Harry Potter and the Deathly Hallows ',100.00)">7</button> -->
       </div>
       <div class="col-xs-3">
         <div ng-show="todoList.page">
         <table class="table table-striped">
-          <tr><td>ขื่อหนังสือ</td>
+          <tr>
+          <td>รหัสสินค้า</td>
+          <td>ขื่อหนังสือ</td>
           <td>จำนวน</td>
-          <td>บาท</td></tr>
+          <td>บาท</td>
+          <td>เพิ่ม/ลด</td></tr>
             <tr ng-repeat="show in todoList.show">
+                <td>{{show.ep}}</td>
                 <td>{{show.name}}</td>
                 <td>{{show.amount}}</td>
                 <td>{{show.price * show.amount}}</td>
+                <td>
+                <span class="glyphicon glyphicon-triangle-top" aria-hidden="true" ng-click="todoList.addbutton(show)"></span>
+                <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true" ng-click="todoList.addsub(show)"></span>
+              </td>
               </tr>
             </div>
           </table>
