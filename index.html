@@ -49,15 +49,14 @@
           <td>ขื่อหนังสือ</td>
           <td>จำนวน</td>
           <td>บาท</td>
-          <td>เพิ่ม/ลด</td></tr>
+          <td>ลบ</td></tr>
             <tr ng-repeat="show in todoList.show">
                 <td>{{show.ep}}</td>
                 <td>{{show.name}}</td>
                 <td>{{show.amount}}</td>
                 <td>{{show.price * show.amount}}</td>
                 <td>
-                <span class="glyphicon glyphicon-triangle-top" aria-hidden="true" ng-click="todoList.addbutton(show)"></span>
-                <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true" ng-click="todoList.addsub(show)"></span>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="todoList.delbutton(show, $index)"></span>
               </td>
               </tr>
             </div>
