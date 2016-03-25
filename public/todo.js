@@ -2,7 +2,6 @@
 angular.module('todoApp', [])
   .controller('TodoListController', function () {
     var todoList = this
-    todoList.title = 'book store'
     todoList.store = []
     todoList.promo = []
     todoList.discount = 0
