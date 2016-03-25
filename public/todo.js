@@ -90,33 +90,6 @@ angular.module('todoApp', [])
     //   }
     //   console.log('todoList.discount' + todoList.discount)
     // }
-    // function cal (data) {
-    //   todoList.discount = 0
-    //   var countbook = 0
-    //   var exit = 0
-    //   do {
-    //     for (var i = 0; i < data.length; i++) {
-    //       if (data[i] !== 0) countbook++
-    //       if (data[i] === 0) {
-    //         countbook += 0
-    //         break
-    //       }
-    //     }
-    //     if (countbook === 1) {}
-    //     if (countbook === 2) { todoList.discount += 20 }
-    //     else if (countbook === 3) todoList.discount += 60
-    //     else if (countbook === 4) todoList.discount += 120
-    //     else if (countbook === 5) todoList.discount += 200
-    //     else if (countbook === 6) todoList.discount += 300
-    //     else if (countbook === 7) todoList.discount += 420
-    //     else if (countbook === 0) exit = 1
-    //     for (var j = 0; j < data.length; j++) {
-    //       data[j] -= 1
-    //       countbook = 0
-    //     }
-    //   } while (exit !== 1)
-    //   console.log('ส่วนลด' + todoList.discount)
-    // }
     function cal (data) {
       console.log(data)
       var countbook = 0
@@ -186,6 +159,45 @@ angular.module('todoApp', [])
       }
       todoList.promo = amount
       console.log('เรียงใหม่เเล้วได้ :' + todoList.promo)
+      cal(todoList.promo)
+    }
+    todoList.addbutton = function (show, index) {
+      repeataddBook(show.ep, show.name, show.price)
+    }
+    function repeataddBook (ep, name, price) {
+      if (checkStore(todoList.store, ep)) {
+        var index = addAmount(todoList.store, ep)
+        todoList.store[index].amount += 1
+      } else {
+        var dataBook = {
+          ep: ep,
+          name: name,
+          price: price,
+          amount: 1
+        }
+        todoList.store.push(dataBook)
+      }
+      if (checkStore(todoList.show, ep)) {
+        var index_show = addAmount(todoList.show, ep)
+        todoList.show[index_show].amount += 1
+      } else {
+        var data = {
+          ep: ep,
+          name: name,
+          price: price,
+          amount: 1
+        }
+        todoList.show.push(data)
+      }
+      var amount = []
+      for (var i = 0; i < todoList.store.length; i++) {
+        if (typeof todoList.store[i].amount !== 'undefined') {
+          amount.push(todoList.store[i].amount)
+        }
+      }
+      todoList.promo = amount
+      console.log('todoList.promo :' + todoList.promo)
+      todoList.page = true
       cal(todoList.promo)
     }
   })
