@@ -48,17 +48,22 @@
           <td>รหัสสินค้า</td>
           <td>ขื่อหนังสือ</td>
           <td>จำนวน</td>
+          <td>แก้ไข</td>
           <td>บาท</td>
           <td>ลบ</td></tr>
             <tr ng-repeat="show in todoList.show">
                 <td>{{show.ep}}</td>
                 <td>{{show.name}}</td>
                 <td>{{show.amount}}</td>
+                <td>
+                  <span class="glyphicon glyphicon-menu-up" aria-hidden="true" ng-click="todoList.addbutton(show, $index)"></span>
+                  <span class="glyphicon glyphicon-menu-down" aria-hidden="true" ng-click="todoList.subbutton(show, $index)"></span>
+                </td>
                 <td>{{show.price * show.amount}}</td>
                 <td>
                 <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="todoList.delbutton(show, $index)"></span>
-                <span class="glyphicon glyphicon-menu-up" aria-hidden="true" ng-click="todoList.addbutton(show, $index)"></span>
-                <span class="glyphicon glyphicon-menu-down" aria-hidden="true" ng-click="todoList.subbutton(show, $index)"></span>
+                <!-- <span class="glyphicon glyphicon-menu-up" aria-hidden="true" ng-click="todoList.addbutton(show, $index)"></span>
+                <span class="glyphicon glyphicon-menu-down" aria-hidden="true" ng-click="todoList.subbutton(show, $index)"></span> -->
               </td>
               </tr>
             </div>
@@ -68,15 +73,18 @@
            ยังไม่มีรายการค่ะ
          </div>
       </div>
-      <!-- <div class="col-xs-3">
-        <button type="button" ng-click="todoList.cal()">ยืนยันรายการ</button>
-      </div> -->
+      <div class="col-xs-3">
+        <!-- <button type="button" ng-click="todoList.cal()">ยืนยันรายการ</button> -->
+        <br> จ่ายเงินทั้งหมด : {{todoList.bill()}}
+        <br> ส่วนลด : {{todoList.discount}}
+        <br> ชำระเงิน : {{todoList.bill() - todoList.discount}}
+      </div>
     </div>
   </div>
   <!-- footer -->
-  <br> จ่ายเงินทั้งหมด : {{todoList.bill() * 100}}
+  <!-- <br> จ่ายเงินทั้งหมด : {{todoList.bill()}}
   <br> ส่วนลด : {{todoList.discount}}
-  <br> ชำระเงิน : {{(todoList.bill() * 100) - todoList.discount}}
+  <br> ชำระเงิน : {{todoList.bill() - todoList.discount}} -->
 </body>
 
 </html>

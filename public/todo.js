@@ -55,7 +55,7 @@ angular.module('todoApp', [])
       for (var i = 0; i < todoList.store.length; i++) {
         total += todoList.store[i].amount
       }
-      return total
+      return total * 100
     }
     // todoList.cal = function () {
     //   var countbook = 0
