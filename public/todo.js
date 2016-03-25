@@ -151,6 +151,15 @@ angular.module('todoApp', [])
       todoList.promo.splice(index, 1)
       todoList.show.splice(index, 1)
       todoList.store.splice(index, 1)
+      console.log('ช่องอะเรของโชว์:' + todoList.show)
+      // for (var im = 0; im < todoList.show.length; im++) {
+      //   if (todoList.show[im] === null) {
+      //     todoList.page = false
+      //   }
+      // }
+      if (todoList.show.length === 0) {
+        todoList.page = false
+      }
       var amount = []
       for (var i = 0; i < todoList.store.length; i++) {
         if (typeof todoList.store[i].amount !== 'undefined') {
@@ -199,5 +208,48 @@ angular.module('todoApp', [])
       console.log('todoList.promo :' + todoList.promo)
       todoList.page = true
       cal(todoList.promo)
+    }
+    function repeatsubBook (ep, name, price) {
+      if (checkStore(todoList.store, ep)) {
+        var index = addAmount(todoList.store, ep)
+        if (todoList.store[index].amount !== 0) {
+          todoList.store[index].amount -= 1
+        }
+      } else {
+        var dataBook = {
+          ep: ep,
+          name: name,
+          price: price,
+          amount: 1
+        }
+        todoList.store.push(dataBook)
+      }
+      if (checkStore(todoList.show, ep)) {
+        var index_show = addAmount(todoList.show, ep)
+        if (todoList.show[index_show].amount !== 0) {
+          todoList.show[index_show].amount -= 1
+        }
+      } else {
+        var data = {
+          ep: ep,
+          name: name,
+          price: price,
+          amount: 1
+        }
+        todoList.show.push(data)
+      }
+      var amount = []
+      for (var i = 0; i < todoList.store.length; i++) {
+        if (typeof todoList.store[i].amount !== 'undefined') {
+          amount.push(todoList.store[i].amount)
+        }
+      }
+      todoList.promo = amount
+      console.log('todoList.promo :' + todoList.promo)
+      todoList.page = true
+      cal(todoList.promo)
+    }
+    todoList.subbutton = function (show, index) {
+      repeatsubBook(show.ep, show.name, show.price)
     }
   })
