@@ -1,126 +1,131 @@
 <!doctype html>
 <html ng-app="todoApp">
-
-<head>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
-  <script src="todo.js"></script>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-</head>
-
-<body ng-controller="TodoListController as todoList">
-  <!-- head -->
-  <br>
-  <div class="container-fluid">
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">
-            <img alt="Brand" src="http://www.b2s.nl/v2/public/themes/v2_mobile/img/share-link-g.png">
-          </a>
-        </div>
-        <p class="navbar-text navbar-left">บ้านนายจิน สั่งหนังสืออนไลน์ได้เลยที่นี่ครับ</p>
-      </div>
-    </nav>
-  </div>
-  <!--close nav -->
-  <!-- content -->
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-6">
-        <!-- <button id="1" ng-click="todoList.addBook(1,'Harry Potter and the Philosophers Stone',100.00)">send</button>h -->
-        <div class="row" align="center">
-          <div class="col-xs-3">
-              <img src="img/hp_1.jpg" width="140" height="140" alt="Harry Potter and the Philosophers Stone" id="b1" class="img-thumbnail b1" ng-click="todoList.addBook(1,'Harry Potter and the Philosophers Stone',100.00)">
-              <br><button id="b1"  class="btn btn-success" ng-click="todoList.addBook(1,'Harry Potter and the Philosophers Stone',100.00)">ซื้อ</button>
-          </div>
-          <div class="col-xs-3">
-            <img src="img/hp_2.jpg" width="140" height="140" alt="Harry Potter and the Chamber of Secrets" class="img-thumbnail" ng-click="todoList.addBook(2,'Harry Potter and the Chamber of Secrets',100.00)">
-            <br><button id="b2"  class="btn btn-success" ng-click="todoList.addBook(2,'Harry Potter and the Chamber of Secrets',100.00)">ซื้อ</button>
-          </div>
-          <div class="col-xs-3">
-            <img src="img/hp_3.jpg" width="140" height="140" alt="Harry Potter and the Prisoner of Azkaban" class="img-thumbnail" ng-click="todoList.addBook(3,'Harry Potter and the Prisoner of Azkaban',100.00)">
-            <button id="b3"  class="btn btn-success" ng-click="todoList.addBook(3,'Harry Potter and the Prisoner of Azkaban',100.00)">ซื้อ</button>
-          </div>
-          <div class="col-xs-3">
-            <img src="img/hp_4.jpg" width="140" height="140" alt="Harry Potter and the Goblet of Fire" class="img-thumbnail" ng-click="todoList.addBook(4,'Harry Potter and the Goblet of Fire',100.00)">
-            <button id="b4"  class="btn btn-success" ng-click="todoList.addBook(4,'Harry Potter and the Goblet of Fire',100.00)">ซื้อ</button>
-          </div>
-        </div>
-        <br>
-        <div class="row" align="center">
-          <div class="col-xs-3">
-            <img src="img/hp_5.jpg" width="140" height="140" alt="Harry Potter and the Order of the Phoenix" class="img-thumbnail" ng-click="todoList.addBook(5,'Harry Potter and the Order of the Phoenix',100.00)">
-            <button id="b5"  class="btn btn-success" ng-click="todoList.addBook(5,'Harry Potter and the Order of the Phoenix',100.00)">ซื้อ</button>
-          </div>
-          <div class="col-xs-3">
-            <img src="img/hp_6.jpg" width="140" height="140" alt="Harry Potter and the Half-Blood Prince" class="img-thumbnail" ng-click="todoList.addBook(6,'Harry Potter and the Half-Blood Prince',100.00)">
-            <button id="b6" class="btn btn-success" ng-click="todoList.addBook(6,'Harry Potter and the Half-Blood Prince',100.00)">ซื้อ</button>
-          </div>
-          <div class="col-xs-3">
-            <img src="img/hp_7.jpg" width="140" height="140" alt="Harry Potter and the Deathly Hallows" class="img-thumbnail" ng-click="todoList.addBook(7,'Harry Potter and the Deathly Hallows',100.00)">
-              <button id="b7" class="btn btn-success" ng-click="todoList.addBook(7,'Harry Potter and the Deathly Hallows',100.00)">ซื้อ</button>
-          </div>
-        </div>  
-      </div>
-      <div class="col-xs-3">
-        <div ng-show="todoList.page">
-          <table class="table table-striped">
-            <tr>
-              <!-- <td>รหัสสินค้า</td> -->
-              <td>ขื่อหนังสือ</td>
-              <td>จำนวน</td>
-              <td>แก้ไข</td>
-              <td>บาท</td>
-              <td>ลบ</td>
-            </tr>
-            <tr ng-repeat="show in todoList.show">
-              <!-- <td class="info">{{show.ep}}</td> -->
-              <td>{{show.name}}</td>
-              <td>{{show.amount}}</td>
-              <td>
-                <span class="glyphicon glyphicon-menu-up" aria-hidden="true" ng-click="todoList.addbutton(show, $index)"></span>
-                <span class="glyphicon glyphicon-menu-down" aria-hidden="true" ng-click="todoList.subbutton(show, $index)"></span>
-              </td>
-              <td>{{show.price * show.amount}}</td>
-              <td class="danger">
-                <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="todoList.delbutton(show, $index)"></span>
-              </td>
-            </tr>
-        </div>
-        </table>
-      </div>
-      <!--ng-show -->
-      <div ng-show="todoList.page!==true">
-        ยังไม่มีรายการค่ะ
-      </div>
-    </div>
-    <div class="col-xs-3">
-      <table class="table table-striped">
-        <tr class="active">
-          <td class="warning">จ่ายเงินทั้งหมด</td>
-          <td class="danger">ส่วนลด</td>
-          <td class="info">ชำระเงิน</td>
-        </tr>
-        <tr>
-          <td class="warning bill">{{todoList.bill()}}</td>
-          <td class="dis">{{todoList.discount}}</td>
-          <td class="info">{{todoList.bill() - todoList.discount}}</td>
-        </tr>
-      </table>
-      <!-- <br> จ่ายเงินทั้งหมด : {{todoList.bill()}}
-      <br>ส่วนลด : {{todoList.discount}}
-      <br> ชำระเงิน : {{todoList.bill() - todoList.discount}} -->
-    </div>
-  </div>
-  </div>
-  <!-- footer -->
-  <!-- <br> จ่ายเงินทั้งหมด : {{todoList.bill()}}
-  <br> ส่วนลด : {{todoList.discount}}
-  <br> ชำระเงิน : {{todoList.bill() - todoList.discount}} -->
-</body>
-
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+		<script src="todo.js"></script>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Checkout Concepts | Demo: Boxes</title>
+		<meta name="description" content="Some simple ideas for enhancing the checkout process" />
+		<meta name="keywords" content="checkout, button, concept, animated, web design, inspiration" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	  <!-- Optional theme -->
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/checkout-boxes.css" />
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body class="color-1" ng-controller="TodoListController as todoList">
+		<div class="container">
+			<header class="codrops-header">
+				<h1>BanNaiJin<span>Online  Book Store</span></h1>
+				<!-- <button type="button" ng-click="todoList.cal()">cal</button> -->
+			</header>
+			<div class="container">
+				<div class="col-xs-8">
+					<section class="content">
+						<div class="dummy-browser">
+							<div class="dummy-browser--inner">
+								<div class="dummy-header"></div>
+								<div class="dummy-grid dummy-grid--filled">
+									<div class="row" align="center">
+					          <div class="col-xs-3">
+					              <img src="img/hp_1.jpg" width="140" height="140" alt="Harry Potter and the Philosophers Stone" id="b1" class="img-thumbnail b1" ng-click="todoList.addBook(1,'Harry Potter and the Philosophers Stone',100.00)">
+					              <br><button id="b1"  class="btn btn-default" ng-click="todoList.addBook(1,'Harry Potter and the Philosophers Stone',100.00)">ซื้อ</button>
+					          </div>
+					          <div class="col-xs-3">
+					            <img src="img/hp_2.jpg" width="140" height="140" alt="Harry Potter and the Chamber of Secrets" class="img-thumbnail" ng-click="todoList.addBook(2,'Harry Potter and the Chamber of Secrets',100.00)">
+					            <br><button id="b2"  class="btn btn-default" ng-click="todoList.addBook(2,'Harry Potter and the Chamber of Secrets',100.00)">ซื้อ</button>
+					          </div>
+					          <div class="col-xs-3">
+					            <img src="img/hp_3.jpg" width="140" height="140" alt="Harry Potter and the Prisoner of Azkaban" class="img-thumbnail" ng-click="todoList.addBook(3,'Harry Potter and the Prisoner of Azkaban',100.00)">
+					            <button id="b3"  class="btn btn-default" ng-click="todoList.addBook(3,'Harry Potter and the Prisoner of Azkaban',100.00)">ซื้อ</button>
+					          </div>
+					          <div class="col-xs-3">
+					            <img src="img/hp_4.jpg" width="140" height="140" alt="Harry Potter and the Goblet of Fire" class="img-thumbnail" ng-click="todoList.addBook(4,'Harry Potter and the Goblet of Fire',100.00)">
+					            <button id="b4"  class="btn btn-default" ng-click="todoList.addBook(4,'Harry Potter and the Goblet of Fire',100.00)">ซื้อ</button>
+					          </div>
+					        </div>
+					        <br>
+					        <div class="row" align="center">
+					          <div class="col-xs-3">
+					            <img src="img/hp_5.jpg" width="140" height="140" alt="Harry Potter and the Order of the Phoenix" class="img-thumbnail" ng-click="todoList.addBook(5,'Harry Potter and the Order of the Phoenix',100.00)">
+					            <button id="b5"  class="btn btn-default" ng-click="todoList.addBook(5,'Harry Potter and the Order of the Phoenix',100.00)">ซื้อ</button>
+					          </div>
+					          <div class="col-xs-3">
+					            <img src="img/hp_6.jpg" width="140" height="140" alt="Harry Potter and the Half-Blood Prince" class="img-thumbnail" ng-click="todoList.addBook(6,'Harry Potter and the Half-Blood Prince',100.00)">
+					            <button id="b6" class="btn btn-default" ng-click="todoList.addBook(6,'Harry Potter and the Half-Blood Prince',100.00)">ซื้อ</button>
+					          </div>
+					          <div class="col-xs-3">
+					            <img src="img/hp_7.jpg" width="140" height="140" alt="Harry Potter and the Deathly Hallows" class="img-thumbnail" ng-click="todoList.addBook(7,'Harry Potter and the Deathly Hallows',100.00)">
+					            <button id="b7" class="btn btn-default" ng-click="todoList.addBook(7,'Harry Potter and the Deathly Hallows',100.00)">ซื้อ</button>
+					          </div>
+								</div><!-- /dummy-grid -->
+							</div>
+						</div>
+					</section>
+					</div>
+					<div class="col-xs-4">
+						<div class="row">
+								<div class="dummy-grid dummy-grid--filled">
+									<div ng-show="todoList.page">
+										<div class="row">
+										<table class="table">
+											<tr  align="left">
+												<!-- <td>รหัสสินค้า</td> -->
+												<td>ขื่อหนังสือ</td>
+												<td>จำนวน</td>
+												<td>แก้ไข</td>
+												<td>บาท</td>
+												<td>ลบ</td>
+											</tr>
+											<tr ng-repeat="show in todoList.show"  align="left">
+												<!-- <td class="info">{{show.ep}}</td> -->
+												<td>{{show.name}}</td>
+												<td>{{show.amount}}</td>
+												<td align="center">
+													<span class="glyphicon glyphicon-menu-up" aria-hidden="true" ng-click="todoList.addbutton(show, $index)"></span><br>
+													<!-- <span class="glyphicon glyphicon-menu-down" aria-hidden="true" ng-click="todoList.subbutton(show, $index)"></span> -->
+												</td>
+												<td>{{show.price * show.amount}}</td>
+												<td>
+													<span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="todoList.delbutton(show, $index)"></span>
+												</td>
+											</tr>
+											</table>
+									</div>
+								</div>
+								<div ng-show="todoList.page!==true">
+					        ยังไม่มีรายการหนังสือนะครับ
+					      </div>
+							</div>
+						</div>
+						<div class="row">
+								<div class="dummy-grid dummy-grid--filled" ng-show="todoList.page!==false">
+									<table class="table">
+						        <tr>
+						          <td>จ่ายเงินทั้งหมด</td>
+						          <td>ส่วนลด</td>
+						          <td>ชำระเงิน</td>
+						        </tr>
+						        <tr>
+						          <td>{{todoList.bill()}}</td>
+						          <td class="dis">{{todoList.discountTotal}}</td>
+						          <td>{{todoList.bill() - todoList.discountTotal}}</td>
+						        </tr>
+						      </table>
+								</div>
+						</div>
+							
+		</div><!-- /container -->
+	
+	</body>
 </html>

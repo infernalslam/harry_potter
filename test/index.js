@@ -42,14 +42,13 @@ describe('TEST Buy Harry Potter Book', function () {
     it('ซื้อเล่ม 1 จำนวน 6 เล่ม, ซื้อเล่ม 2 จำนวน 5 เล่ม, ซื้อเล่ม 3 จำนวน 4 เล่ม, ซื้อเล่ม 4 จำนวน 1 เล่ม ส่วนลดต้องเท่ากับ 320', function * () {
       var case1 = yield nightmare
         .goto('http://localhost:3000')
-        .wait(2000)
+        .wait(3000)
         .click('#b1')
         .click('#b1')
         .click('#b1')
         .click('#b1')
         .click('#b1')
         .click('#b1')
-        .wait(1000)
         .click('#b2')
         .click('#b2')
         .click('#b2')
@@ -60,6 +59,7 @@ describe('TEST Buy Harry Potter Book', function () {
         .click('#b3')
         .click('#b3')
         .click('#b4')
+        .wait(1000)
         .evaluate(function () {
           this.price = document.querySelector('.dis').innerHTML
           return this.price
@@ -182,6 +182,94 @@ describe('TEST Buy Harry Potter Book', function () {
           return this.price
         })
       case10.should.equal('20')
+    })
+    it('ซื้อ 1,2 เล่มไม่ซ้ำกัน ส่วนลดต้องเท่ากับ 20', function * () {
+      var case10 = yield nightmare
+        .goto('http://localhost:3000')
+        .wait(2000)
+        .click('#b1')
+        .click('#b2')
+        .click('#b1')
+        .evaluate(function () {
+          this.price = document.querySelector('.dis').innerHTML
+          return this.price
+        })
+      case10.should.equal('20')
+    })
+    it('ซื้อ 1,2,3 เล่มไม่ซ้ำกัน ส่วนลดต้องเท่ากับ 60', function * () {
+      var case10 = yield nightmare
+        .goto('http://localhost:3000')
+        .wait(2000)
+        .click('#b1')
+        .click('#b2')
+        .click('#b3')
+        .wait(2000)
+        .evaluate(function () {
+          this.price = document.querySelector('.dis').innerHTML
+          return this.price
+        })
+      case10.should.equal('60')
+    })
+    it('ซื้อ 1,2,3,4 เล่มไม่ซ้ำกัน ส่วนลดต้องเท่ากับ 120', function * () {
+      var case10 = yield nightmare
+        .goto('http://localhost:3000')
+        .wait(2000)
+        .click('#b1')
+        .click('#b2')
+        .click('#b3')
+        .click('#b4')
+        .evaluate(function () {
+          this.price = document.querySelector('.dis').innerHTML
+          return this.price
+        })
+      case10.should.equal('120')
+    })
+    it('ซื้อ 1,2,3,4,5 เล่มไม่ซ้ำกัน ส่วนลดต้องเท่ากับ 200', function * () {
+      var case10 = yield nightmare
+        .goto('http://localhost:3000')
+        .wait(2000)
+        .click('#b1')
+        .click('#b2')
+        .click('#b3')
+        .click('#b4')
+        .click('#b5')
+        .evaluate(function () {
+          this.price = document.querySelector('.dis').innerHTML
+          return this.price
+        })
+      case10.should.equal('200')
+    })
+    it('ซื้อ 1,2,3,4,5,6 เล่มไม่ซ้ำกัน ส่วนลดต้องเท่ากับ 300', function * () {
+      var case10 = yield nightmare
+        .goto('http://localhost:3000')
+        .wait(2000)
+        .click('#b1')
+        .click('#b2')
+        .click('#b3')
+        .click('#b4')
+        .click('#b5')
+        .click('#b6')
+        .evaluate(function () {
+          this.price = document.querySelector('.dis').innerHTML
+          return this.price
+        })
+      case10.should.equal('300')
+    })
+    it('ซื้อ 1,2,3,4,5,6 เล่มซ้ำกัน ส่วนลดต้องเท่ากับ 300', function * () {
+      var case10 = yield nightmare
+        .goto('http://localhost:3000')
+        .wait(2000)
+        .click('#b1')
+        .click('#b2')
+        .click('#b3')
+        .click('#b4')
+        .click('#b5')
+        .click('#b6')
+        .evaluate(function () {
+          this.price = document.querySelector('.dis').innerHTML
+          return this.price
+        })
+      case10.should.equal('300')
     })
   })
 })
