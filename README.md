@@ -17,7 +17,7 @@ $ npm install
 $ npm start
 $ npm test
 ```
-http://code-maven.com/img/angularjs.png
+
 ## Features
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 [![angularjs](http://code-maven.com/img/angularjs.png)](http://code-maven.com/img/angularjs.png)
